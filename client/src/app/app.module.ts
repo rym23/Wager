@@ -20,7 +20,7 @@ import { WaitingComponent } from './waiting/waiting.component';
     AppComponent,
     WelcomeComponent,
     HuborcontComponent,
-    NamesComponent
+    NamesComponent,
     WaitingComponent
   ],
   imports: [

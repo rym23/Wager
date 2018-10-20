@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full'},
     { path: 'welcome', component: WelcomeComponent },
   { path: 'huborcont', component: HuborcontComponent},
-  { path: 'names', component: NamesComponent}
+  { path: 'names', component: NamesComponent},
     { path: 'waiting', component: WaitingComponent },
 
 ];
