@@ -13,6 +13,7 @@ import { NamesComponent } from './names/names.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material'
 import {ReactiveFormsModule} from '@angular/forms';
+import { WaitingComponent } from './waiting/waiting.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     WelcomeComponent,
     HuborcontComponent,
     NamesComponent
+    WaitingComponent
   ],
   imports: [
     BrowserModule,
