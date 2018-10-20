@@ -9,12 +9,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HuborcontComponent } from './huborcont/huborcont.component';
+import { WaitingComponent } from './waiting/waiting.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    HuborcontComponent
+    HuborcontComponent,
+    WaitingComponent
   ],
   imports: [
     BrowserModule,
