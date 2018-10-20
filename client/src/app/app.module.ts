@@ -14,6 +14,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material'
 import {ReactiveFormsModule} from '@angular/forms';
 import { WaitingComponent } from './waiting/waiting.component';
+import { MainComponent } from './main/main.component';
+import { EndComponent } from './end/end.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { WaitingComponent } from './waiting/waiting.component';
     WelcomeComponent,
     HuborcontComponent,
     NamesComponent,
-    WaitingComponent
+    WaitingComponent,
+    MainComponent,
+    EndComponent
   ],
   imports: [
     BrowserModule,
