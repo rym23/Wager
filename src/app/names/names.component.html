@@ -1,0 +1,24 @@
+<mat-grid-list cols="3"> 
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="player-card">
+      <mat-card-content>
+        <form [formGroup]="playerGroup">
+          <div formArrayName="itemRows">
+            <h4></h4>
+            <div *ngFor="let itemrow of playerGroup.controls.itemRows.controls; let i=index"  [formGroupName]="i">
+              <div class="form-group">
+                <mat-form-field>
+                  <input matInput formControlName="itemname" class="form-control" value="Player #{{ i + 1 }}" placeholder="Player #{{ i + 1 }}">
+                </mat-form-field>
+                <button mat-button *ngIf="playerGroup.controls.itemRows.controls.length > 1" (click)="deletePlayer(i)">Delete Player</button>
+              </div>
+            </div>
+          </div>
+          <button mat-button type="button" (click)="addPlayer()">Add Player</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>

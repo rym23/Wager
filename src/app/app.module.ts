@@ -9,12 +9,17 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HuborcontComponent } from './huborcont/huborcont.component';
+import { NamesComponent } from './names/names.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material'
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    HuborcontComponent
+    HuborcontComponent,
+    NamesComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,10 @@ import { HuborcontComponent } from './huborcont/huborcont.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
