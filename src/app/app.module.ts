@@ -8,6 +8,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { SocketIoModule, SocketIoConfig } from 'ng6-socket-io';
+import {ControllerService} from './controller.service';
+ 
+const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +24,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    SocketIoModule.forRoot(config)
   ],
-  providers: [],
+  providers: [ControllerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

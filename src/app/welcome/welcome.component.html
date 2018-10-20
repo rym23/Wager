@@ -1,16 +1,16 @@
 <mat-grid-list cols="3"> 
-<mat-grid-tile></mat-grid-tile>
-<mat-grid-tile>
-<mat-card class="welcome-card">
-  <mat-card-content>
-    <h1>
-      Welcome To WAGER
-    </h1>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>Start</button>
-  </mat-card-actions>
-</mat-card>
-</mat-grid-tile>
-<mat-grid-tile></mat-grid-tile>
-</mat-grid-list>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+  <mat-card class="welcome-card">
+    <mat-card-content>
+      <h1>
+        Welcome To WAGER
+      </h1>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="sendHi()">Start</button>
+    </mat-card-actions>
+  </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
