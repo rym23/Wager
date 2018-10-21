@@ -13,7 +13,7 @@ export class ControllerService {
     this.socket.emit('send-names', names);    
   }
   
-  getMessages() {
+  getNames() {
     let observable = new Observable(observer => {
       this.socket = io(this.url);
       this.socket.on('names', (data) => {
@@ -30,7 +30,7 @@ export class ControllerService {
     this.socket.emit('send-command', command);    
   }
   
-  getCommands() {
+  getCommand() {
     let observable = new Observable(observer => {
       this.socket = io(this.url);
       this.socket.on('command', (data) => {
