@@ -8,10 +8,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+questionContent: string;
+questionsSet: Set<string>;
   private playerNames: string[];
 
   constructor(private controller: ControllerService,
-    private router: Router) { }
+    private router: Router) {
+      this.questionsSet = new Set();
+      var result = null;
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", "../../assets/questions.txt", false);
+      xmlhttp.send();
+      if (xmlhttp.status == 200)
+        result = xmlhttp.responseText;
+      var questionsArr = result.split("\n");
+  
+      for (let question of questionsArr) {
+        this.questionsSet.add(question);
+      }
+  
+      this.newQuestion();
+     }
 
   ngOnInit() {
     this.controller.getNames().subscribe( names => {
@@ -21,7 +38,7 @@ export class MainComponent implements OnInit {
     this.controller.getCommand().subscribe( command => {
       console.log(command);
       if(command == 'next'){
-        
+        this.newQuestion();
       }
       if(command == 'quit'){
         this.router.navigate(['/end']);
@@ -29,4 +46,17 @@ export class MainComponent implements OnInit {
     });
   }
 
+  newQuestion() {
+    var randIndex = Math.floor(Math.random() * (this.questionsSet.size + 1));
+    var i = 0;
+    for (var item of Array.from(this.questionsSet.values())){
+      if (i == randIndex)
+      {
+        this.questionContent = item;
+        this.questionsSet.delete(item);
+        return;
+      }
+      i++;
+    }
+  }
 }
