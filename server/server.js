@@ -11,9 +11,14 @@ io.on('connection', (socket) => {
     console.log('user disconnected');
   });
   
-  socket.on('add-message', (message) => {
-    io.emit('message', {type:'new-message', text: message});    
+  socket.on('send-names', (names) => {
+    io.emit('names', names);    
   });
+
+  socket.on('send-command', (command) => {
+    io.emit('command', command);    
+  });
+
 });
 
 http.listen(5000, () => {
