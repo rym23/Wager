@@ -10,32 +10,28 @@ import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms'
 })
 export class NamesComponent implements OnInit {
   playerGroup: FormGroup;
-  playerNum: number;
 
   ngOnInit() {
     this.playerGroup = this._fb.group({ 
-      itemRows: this._fb.array([this.initItemRows()])
+      players: this._fb.array([this.initPlayers()])
     });
   }
 
-  constructor (private _fb: FormBuilder) {
-    this.playerNum = 1;
-  }
+  constructor (private _fb: FormBuilder) { }
 
-  initItemRows() {
+  initPlayers() {
     return this._fb.group({
-      itemname: ['']
+      playername: ['']
     });
   }
 
   addPlayer() {
-    // this.playerNum += 1;
-    const control = <FormArray>this.playerGroup.controls['itemRows'];
-    control.push(this.initItemRows());
+    const control = <FormArray>this.playerGroup.controls['players'];
+    control.push(this.initPlayers());
   }
 
   deletePlayer(index: number) {
-    const control = <FormArray>this.playerGroup.controls['itemRows'];
+    const control = <FormArray>this.playerGroup.controls['players'];
     control.removeAt(index);
   }
 }
