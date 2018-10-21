@@ -2,6 +2,7 @@ import { Component, OnInit, createPlatformFactory } from '@angular/core';
 import { group } from '@angular/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms'
+import { PlayerDataService } from '../player-data.service';
 
 @Component({
   selector: 'app-names',
@@ -10,6 +11,8 @@ import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms'
 })
 export class NamesComponent implements OnInit {
   playerGroup: FormGroup;
+  public playerNames: FormArray;
+  public playerNamesString: string[];
 
   ngOnInit() {
     this.playerGroup = this._fb.group({ 
@@ -17,7 +20,9 @@ export class NamesComponent implements OnInit {
     });
   }
 
-  constructor (private _fb: FormBuilder) { }
+  constructor (private _fb: FormBuilder) { 
+    this.playerNamesString = [];
+  }
 
   initPlayers() {
     return this._fb.group({
@@ -26,12 +31,19 @@ export class NamesComponent implements OnInit {
   }
 
   addPlayer() {
-    const control = <FormArray>this.playerGroup.controls['players'];
-    control.push(this.initPlayers());
+    this.playerNames = <FormArray>this.playerGroup.controls['players'];
+    this.playerNames.push(this.initPlayers());
   }
 
   deletePlayer(index: number) {
-    const control = <FormArray>this.playerGroup.controls['players'];
-    control.removeAt(index);
+    this.playerNames = <FormArray>this.playerGroup.controls['players'];
+    this.playerNames.removeAt(index);
+  }
+
+  ready () {
+    this.playerNames = <FormArray>this.playerGroup.controls['players'];
+    for(var item of this.playerNames.getRawValue()) {
+      this.playerNamesString.push(item['playername']);
+    }
   }
 }
