@@ -50,5 +50,3 @@ Who can name more cities in Washington, ${ varname } or ${ varname2 }?
 Who can name more cities in West Virginia, ${ varname } or ${ varname2 }?
 Who can name more cities in Wisconsin, ${ varname } or ${ varname2 }?
 Who can name more cities in Wyoming, ${ varname } or ${ varname2 }?
-
-
