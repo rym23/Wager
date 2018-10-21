@@ -6,6 +6,7 @@ import { NamesComponent } from './names/names.component';
 import { WaitingComponent } from './waiting/waiting.component';
 import { MainComponent } from './main/main.component';
 import { EndComponent } from './end/end.component';
+import { GameButtonsComponent } from './game-buttons/game-buttons.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'waiting', component: WaitingComponent },
     { path: 'main', component: MainComponent },
     { path: 'end', component: EndComponent },
+    { path: 'game-buttons', component: GameButtonsComponent},
 
 
 ];

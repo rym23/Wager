@@ -16,6 +16,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { WaitingComponent } from './waiting/waiting.component';
 import { MainComponent } from './main/main.component';
 import { EndComponent } from './end/end.component';
+import { ControllerService } from './controller.service';
+import { GameButtonsComponent } from './game-buttons/game-buttons.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { EndComponent } from './end/end.component';
     NamesComponent,
     WaitingComponent,
     MainComponent,
-    EndComponent
+    EndComponent,
+    GameButtonsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { EndComponent } from './end/end.component';
     MatInputModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ControllerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

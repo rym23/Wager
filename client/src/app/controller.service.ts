@@ -7,15 +7,14 @@ import * as io from 'socket.io-client';
 })
 export class ControllerService {
   private url = 'http://localhost:5000';  
-  private socket;
-  
+  private socket = io(this.url);
+
   sendNames(names: string[]){
     this.socket.emit('send-names', names);    
   }
   
   getNames() {
     let observable = new Observable(observer => {
-      this.socket = io(this.url);
       this.socket.on('names', (data) => {
         observer.next(data);    
       });
@@ -32,7 +31,6 @@ export class ControllerService {
   
   getCommand() {
     let observable = new Observable(observer => {
-      this.socket = io(this.url);
       this.socket.on('command', (data) => {
         observer.next(data);    
       });
