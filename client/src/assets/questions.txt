@@ -1,52 +1,52 @@
-Who can name more states? ${ varname } or ${ varname2 }?
-Who can name more cities in Alabama, ${ varname } or ${ varname2 }?
-Who can name more cities in Alaska, ${ varname } or ${ varname2 }?
-Who can name more cities in Arizona, ${ varname } or ${ varname2 }?
-Who can name more cities in Arkansas, ${ varname } or ${ varname2 }?
-Who can name more cities in California, ${ varname } or ${ varname2 }?
-Who can name more cities in Colorado, ${ varname } or ${ varname2 }?
-Who can name more cities in Connecticut, ${ varname } or ${ varname2 }?
-Who can name more cities in Delaware, ${ varname } or ${ varname2 }?
-Who can name more cities in District of Columbia, ${ varname } or ${ varname2 }?
-Who can name more cities in Florida, ${ varname } or ${ varname2 }?
-Who can name more cities in Georgia, ${ varname } or ${ varname2 }?
-Who can name more cities in Hawaii, ${ varname } or ${ varname2 }?
-Who can name more cities in Idaho, ${ varname } or ${ varname2 }?
-Who can name more cities in Illinois, ${ varname } or ${ varname2 }?
-Who can name more cities in Indiana, ${ varname } or ${ varname2 }?
-Who can name more cities in Iowa, ${ varname } or ${ varname2 }?
-Who can name more cities in Kansas, ${ varname } or ${ varname2 }?
-Who can name more cities in Kentucky, ${ varname } or ${ varname2 }?
-Who can name more cities in Louisiana, ${ varname } or ${ varname2 }?
-Who can name more cities in Maine, ${ varname } or ${ varname2 }?
-Who can name more cities in Maryland, ${ varname } or ${ varname2 }?
-Who can name more cities in Massachusetts, ${ varname } or ${ varname2 }?
-Who can name more cities in Michigan, ${ varname } or ${ varname2 }?
-Who can name more cities in Minnesota, ${ varname } or ${ varname2 }?
-Who can name more cities in Mississippi, ${ varname } or ${ varname2 }?
-Who can name more cities in Missouri, ${ varname } or ${ varname2 }?
-Who can name more cities in Montana, ${ varname } or ${ varname2 }?
-Who can name more cities in Nebraska, ${ varname } or ${ varname2 }?
-Who can name more cities in Nevada, ${ varname } or ${ varname2 }?
-Who can name more cities in New Hampshire, ${ varname } or ${ varname2 }?
-Who can name more cities in New Jersey, ${ varname } or ${ varname2 }?
-Who can name more cities in New Mexico, ${ varname } or ${ varname2 }?
-Who can name more cities in New York, ${ varname } or ${ varname2 }?
-Who can name more cities in North Carolina, ${ varname } or ${ varname2 }?
-Who can name more cities in North Dakota, ${ varname } or ${ varname2 }?
-Who can name more cities in Ohio, ${ varname } or ${ varname2 }?
-Who can name more cities in Oklahoma, ${ varname } or ${ varname2 }?
-Who can name more cities in Oregon, ${ varname } or ${ varname2 }?
-Who can name more cities in Pennsylvania, ${ varname } or ${ varname2 }?
-Who can name more cities in Rhode Island, ${ varname } or ${ varname2 }?
-Who can name more cities in South Carolina, ${ varname } or ${ varname2 }?
-Who can name more cities in South Dakota, ${ varname } or ${ varname2 }?
-Who can name more cities in Tennessee, ${ varname } or ${ varname2 }?
-Who can name more cities in Texas, ${ varname } or ${ varname2 }?
-Who can name more cities in Utah, ${ varname } or ${ varname2 }?
-Who can name more cities in Vermont, ${ varname } or ${ varname2 }?
-Who can name more cities in Virginia, ${ varname } or ${ varname2 }?
-Who can name more cities in Washington, ${ varname } or ${ varname2 }?
-Who can name more cities in West Virginia, ${ varname } or ${ varname2 }?
-Who can name more cities in Wisconsin, ${ varname } or ${ varname2 }?
-Who can name more cities in Wyoming, ${ varname } or ${ varname2 }?
+Who can name more states? ${playerOne} or ${playerTwo}?
+Who can name more cities in Alabama, ${playerOne} or ${playerTwo}?
+Who can name more cities in Alaska, ${playerOne} or ${playerTwo}?
+Who can name more cities in Arizona, ${playerOne} or ${playerTwo}?
+Who can name more cities in Arkansas, ${playerOne} or ${playerTwo}?
+Who can name more cities in California, ${playerOne} or ${playerTwo}?
+Who can name more cities in Colorado, ${playerOne} or ${playerTwo}?
+Who can name more cities in Connecticut, ${playerOne} or ${playerTwo}?
+Who can name more cities in Delaware, ${playerOne} or ${playerTwo}?
+Who can name more cities in District of Columbia, ${playerOne} or ${playerTwo}?
+Who can name more cities in Florida, ${playerOne} or ${playerTwo}?
+Who can name more cities in Georgia, ${playerOne} or ${playerTwo}?
+Who can name more cities in Hawaii, ${playerOne} or ${playerTwo}?
+Who can name more cities in Idaho, ${playerOne} or ${playerTwo}?
+Who can name more cities in Illinois, ${playerOne} or ${playerTwo}?
+Who can name more cities in Indiana, ${playerOne} or ${playerTwo}?
+Who can name more cities in Iowa, ${playerOne} or ${playerTwo}?
+Who can name more cities in Kansas, ${playerOne} or ${playerTwo}?
+Who can name more cities in Kentucky, ${playerOne} or ${playerTwo}?
+Who can name more cities in Louisiana, ${playerOne} or ${playerTwo}?
+Who can name more cities in Maine, ${playerOne} or ${playerTwo}?
+Who can name more cities in Maryland, ${playerOne} or ${playerTwo}?
+Who can name more cities in Massachusetts, ${playerOne} or ${playerTwo}?
+Who can name more cities in Michigan, ${playerOne} or ${playerTwo}?
+Who can name more cities in Minnesota, ${playerOne} or ${playerTwo}?
+Who can name more cities in Mississippi, ${playerOne} or ${playerTwo}?
+Who can name more cities in Missouri, ${playerOne} or ${playerTwo}?
+Who can name more cities in Montana, ${playerOne} or ${playerTwo}?
+Who can name more cities in Nebraska, ${playerOne} or ${playerTwo}?
+Who can name more cities in Nevada, ${playerOne} or ${playerTwo}?
+Who can name more cities in New Hampshire, ${playerOne} or ${playerTwo}?
+Who can name more cities in New Jersey, ${playerOne} or ${playerTwo}?
+Who can name more cities in New Mexico, ${playerOne} or ${playerTwo}?
+Who can name more cities in New York, ${playerOne} or ${playerTwo}?
+Who can name more cities in North Carolina, ${playerOne} or ${playerTwo}?
+Who can name more cities in North Dakota, ${playerOne} or ${playerTwo}?
+Who can name more cities in Ohio, ${playerOne} or ${playerTwo}?
+Who can name more cities in Oklahoma, ${playerOne} or ${playerTwo}?
+Who can name more cities in Oregon, ${playerOne} or ${playerTwo}?
+Who can name more cities in Pennsylvania, ${playerOne} or ${playerTwo}?
+Who can name more cities in Rhode Island, ${playerOne} or ${playerTwo}?
+Who can name more cities in South Carolina, ${playerOne} or ${playerTwo}?
+Who can name more cities in South Dakota, ${playerOne} or ${playerTwo}?
+Who can name more cities in Tennessee, ${playerOne} or ${playerTwo}?
+Who can name more cities in Texas, ${playerOne} or ${playerTwo}?
+Who can name more cities in Utah, ${playerOne} or ${playerTwo}?
+Who can name more cities in Vermont, ${playerOne} or ${playerTwo}?
+Who can name more cities in Virginia, ${playerOne} or ${playerTwo}?
+Who can name more cities in Washington, ${playerOne} or ${playerTwo}?
+Who can name more cities in West Virginia, ${playerOne} or ${playerTwo}?
+Who can name more cities in Wisconsin, ${playerOne} or ${playerTwo}?
+Who can name more cities in Wyoming, ${playerOne} or ${playerTwo}?

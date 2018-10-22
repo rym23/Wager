@@ -15,6 +15,7 @@ export class NamesComponent implements OnInit {
   playerGroup: FormGroup;
   public playerNames: FormArray;
   public playerNamesString: string[];
+  public enoughPlayers: boolean;
 
   ngOnInit() {
     this.playerGroup = this._fb.group({ 
@@ -38,11 +39,16 @@ export class NamesComponent implements OnInit {
   addPlayer() {
     this.playerNames = <FormArray>this.playerGroup.controls['players'];
     this.playerNames.push(this.initPlayers());
+    if (this.playerNames.length > 1)
+      this.enoughPlayers = true;
   }
 
   deletePlayer(index: number) {
     this.playerNames = <FormArray>this.playerGroup.controls['players'];
     this.playerNames.removeAt(index);
+
+    if (this.playerNames.length < 2)
+      this.enoughPlayers = false;
   }
 
   ready () {
@@ -54,5 +60,4 @@ export class NamesComponent implements OnInit {
     this.controller.sendNames(this.playerNamesString);
     this.router.navigate(['/game-buttons']);
   }
-
 }

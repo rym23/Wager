@@ -11,12 +11,12 @@
                 <mat-form-field>
                   <input matInput formControlName="playername" class="form-control" placeholder="Player #{{ i + 1 }}">
                 </mat-form-field>
-                <button mat-button *ngIf="playerGroup.controls.players.controls.length > 1" (click)="deletePlayer(i)" class="deleteBut">Delete Player</button>
+                <button mat-button *ngIf="playerGroup.controls.players.controls.length > 2" (click)="deletePlayer(i)" class="deleteBut">Delete Player</button>
               </div>
             </div>
           </div>
           <button mat-button type="button" (click)="addPlayer()">Add Player</button>
-          <a [routerLink]="['/main']"><button mat-button class="buttoncol" (click)="ready()">Ready!</button></a>
+          <a [routerLink]="['/main']"><button mat-button class="buttoncol" (click)="ready()" *ngIf="playerGroup.controls.players.controls.length > 1">Ready!</button></a>
         </form>
       </mat-card-content>
     </mat-card>
