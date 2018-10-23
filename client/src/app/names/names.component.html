@@ -1,25 +1,21 @@
-<mat-grid-list cols="3"> 
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="player-card">
-      <mat-card-content>
-        <form [formGroup]="playerGroup">
-          <div formArrayName="players">
-            <h4></h4>
-            <div *ngFor="let player of playerGroup.controls.players.controls; let i=index"  [formGroupName]="i">
-              <div class="form-group">
-                <mat-form-field>
-                  <input matInput formControlName="playername" class="form-control" placeholder="Player #{{ i + 1 }}">
-                </mat-form-field>
-                <button mat-button *ngIf="playerGroup.controls.players.controls.length > 2" (click)="deletePlayer(i)" class="deleteBut">Delete Player</button>
+<div fxLayout="column" fxLayoutAlign=" center" class="row-height">
+    <mat-card fxFlex="80">
+      <mat-card-content fxLayout="column" fxLayoutAlign=" center">
+          <form [formGroup]="playerGroup">
+              <div formArrayName="players">
+                <h4></h4>
+                <div *ngFor="let player of playerGroup.controls.players.controls; let i=index"  [formGroupName]="i">
+                  <div class="form-group">
+                    <mat-form-field>
+                      <input matInput formControlName="playername" class="form-control" placeholder="Player #{{ i + 1 }}">
+                    </mat-form-field>
+                    <button mat-button *ngIf="playerGroup.controls.players.controls.length > 2" (click)="deletePlayer(i)" class="deleteBut">Delete Player</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <button mat-button type="button" (click)="addPlayer()">Add Player</button>
-          <a [routerLink]="['/main']"><button mat-button class="buttoncol" (click)="ready()" *ngIf="playerGroup.controls.players.controls.length > 1">Ready!</button></a>
-        </form>
+              <button mat-button type="button" (click)="addPlayer()">Add Player</button>
+              <a [routerLink]="['/main']"><button mat-button class="buttoncol" (click)="ready()" *ngIf="playerGroup.controls.players.controls.length > 1">Ready!</button></a>
+            </form>
       </mat-card-content>
     </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
-</mat-grid-list>
+  </div>

@@ -1,14 +1,9 @@
-<mat-grid-list cols="3"> 
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="player-card">
-      <mat-card-content>
-        <p>
-          {{ questionContent }}
-        </p>
-        <button mat-button (click)="newQuestion()">New Question</button>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
-</mat-grid-list>
+<div fxLayout="row" fxLayoutAlign="center center" class="row-height">
+  <mat-card fxFlex="60">
+    <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+      <h1>
+        {{ questionContent }}
+      </h1>
+    </mat-card-content>
+  </mat-card>
+</div>

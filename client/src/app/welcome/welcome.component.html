@@ -1,16 +1,10 @@
-<mat-grid-list cols="3"> 
-<mat-grid-tile></mat-grid-tile>
-<mat-grid-tile>
-<mat-card class="welcome-card">
-  <mat-card-content>
-    <h1>
-      Welcome To WAGER
-    </h1>
-  </mat-card-content>
-  <mat-card-actions>
-      <a [routerLink]="['/huborcont']"><button mat-button class="buttoncol">Start</button></a>
-  </mat-card-actions>
-</mat-card>
-</mat-grid-tile>
-<mat-grid-tile></mat-grid-tile>
-</mat-grid-list>
+<div fxLayout="row" fxLayoutAlign="center center" class="row-height" >
+  <mat-card fxFlex="60">
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center" >
+      <h1 color="primary">
+        Welcome To WAGER
+      </h1>
+      <a [routerLink]="['/huborcont']"><button mat-raised-button color="accent" class="buttoncol">Start</button></a>
+    </mat-card-content>
+  </mat-card>
+</div>

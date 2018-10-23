@@ -1,12 +1,20 @@
-mat-grid-tile {
-    height: 100%;
-    width: 100%;
+mat-card-content {
+    min-height: 90vh;
+    margin: auto;
 }
 
 mat-card {
-    height: 100%;
-    width: 100%;
-    flex: "flex";
+    text-align: center;
+    min-height: 90vh;
+    min-width: 80vh;
+}
+
+.buttoncol {
+    color: black;
+}
+
+.row-height {
+    min-height: 90vh;
 }
 
 .buttoncol {
@@ -19,8 +27,4 @@ mat-card {
     color:white;
     margin-left:10px;
     
-}
-
-.player-card {
-text-align: center;
 }

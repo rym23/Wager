@@ -18,6 +18,7 @@ import { MainComponent } from './main/main.component';
 import { EndComponent } from './end/end.component';
 import { ControllerService } from './controller.service';
 import { GameButtonsComponent } from './game-buttons/game-buttons.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { GameButtonsComponent } from './game-buttons/game-buttons.component';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [ControllerService],
   bootstrap: [AppComponent]

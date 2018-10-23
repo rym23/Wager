@@ -1,12 +1,17 @@
-mat-card {
-    text-align: center;
+mat-card-content {
+    min-height: 40vh;
+    margin: auto;
 }
 
-mat-card-actions {
-    display: block;
-    margin: auto;
+mat-card {
+    text-align: center;
+    min-height: 40vh;
 }
 
 .buttoncol {
     color: black;
+}
+
+.row-height {
+    min-height: 90vh;
 }

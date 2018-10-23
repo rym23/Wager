@@ -1,3 +1,13 @@
-h1 {
+mat-card {
     text-align: center;
+    min-height: 40vh;
+}
+
+mat-card-content {
+    min-height: 40vh;
+    margin: auto;
+}
+
+.row-height {
+    min-height: 90vh;
 }
