@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
 })
 
 export class MainComponent implements OnInit {
-  questionContent: string;
-  questionsSet: Set<string>;
+  private questionContent: string;
+  private questionsSet: Set<string>;
   private playerNames: any;
-  private lastPlayers: string[];
+  private playerPointer: number;
 
   constructor(private controller: ControllerService,
     private router: Router) { 
-      this.lastPlayers = [];
+      this.playerPointer = 0;
       this.questionsSet = new Set();
       var result = null;
       var xmlhttp = new XMLHttpRequest();
@@ -55,7 +55,6 @@ export class MainComponent implements OnInit {
       {
         var playerOne = this.getPlayerOne();
         var playerTwo = this.getPlayerTwo(playerOne);
-        this.updateLastPlayers(playerOne, playerTwo);
         this.questionContent = item.replace("${playerOne}", playerOne).replace("${playerTwo}", playerTwo);
         this.questionsSet.delete(item);
         return;
@@ -65,27 +64,17 @@ export class MainComponent implements OnInit {
   }
 
   getPlayerOne() {
-    var playerOne = this.playerNames[Math.floor(Math.random() * (this.playerNames.length))];
-    // Prevents choosing the same people two rounds in a row if there are more than 2 people.
-    if (this.playerNames.length > 2) {
-        while(this.lastPlayers.includes(playerOne)) {
-        playerOne = this.playerNames[Math.floor(Math.random() * (this.playerNames.length))];
-      }
-    }
+    var playerOne = this.playerNames[this.playerPointer];
+    this.playerPointer = (this.playerPointer + 1) % this.playerNames.length;
+
     return playerOne;
   }
 
   getPlayerTwo(playerOne) {
     var playerTwo = playerOne;
-    while (playerOne === playerTwo || (this.lastPlayers.includes(playerTwo) && this.playerNames.length > 3)) {
+    while (playerOne === playerTwo) {
       playerTwo = this.playerNames[Math.floor(Math.random() * (this.playerNames.length))];
     }
     return playerTwo;
-  }
-
-  updateLastPlayers(playerOne, playerTwo) {
-    this.lastPlayers = [];
-    this.lastPlayers.push(playerOne);
-    this.lastPlayers.push(playerTwo);
   }
 }
