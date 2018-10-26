@@ -1,3 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+body {
+    background: #3494e6;
+    background: linear-gradient(to right, #3494e6, #ec6ead);
+//    color: white;
+  }
+
+// mat-card {
+//     background-color: transparent !important;
+// }

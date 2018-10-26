@@ -19,6 +19,7 @@ import { EndComponent } from './end/end.component';
 import { ControllerService } from './controller.service';
 import { GameButtonsComponent } from './game-buttons/game-buttons.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     WaitingComponent,
     MainComponent,
     EndComponent,
-    GameButtonsComponent
+    GameButtonsComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
