@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyBGRKE_WHm5tmAsq1g3bMJDXAvu4Tg8EKA",
-    authDomain: "wager-a1aff.firebaseapp.com",
-    databaseURL: "https://wager-a1aff.firebaseio.com",
-    projectId: "wager-a1aff",
-    storageBucket: "",
-    messagingSenderId: "527790538791"
+    apiKey: "AIzaSyDsUVJN_NXTqEo_raDMlBZatQfhZh33k-U",
+    authDomain: "wager-b1d47.firebaseapp.com",
+    databaseURL: "https://wager-b1d47.firebaseio.com",
+    projectId: "wager-b1d47",
+    storageBucket: "wager-b1d47.appspot.com",
+    messagingSenderId: "973774365918"
   }
 };
