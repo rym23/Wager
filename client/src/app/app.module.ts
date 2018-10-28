@@ -20,6 +20,9 @@ import { ControllerService } from './controller.service';
 import { GameButtonsComponent } from './game-buttons/game-buttons.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CategoryComponent } from './category/category.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { CategoryComponent } from './category/category.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [ControllerService],
   bootstrap: [AppComponent]
