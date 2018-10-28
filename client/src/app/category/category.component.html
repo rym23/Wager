@@ -1,0 +1,12 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="row-height">
+  <mat-card fxFlex="60">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+      <h2>Your category is</h2>
+      <h1 id="category" [@tada]="selected">
+        {{ currentCategory }}
+      </h1>
+      <h1> <span [hidden]="!showOpponentLine" [@fadeIn]="showOpponentLine">Your oppenent is </span><span id="opponent" [hidden]="!showOpponent" [@fadeIn]="showOpponent">Tom</span></h1>
+    </mat-card-content>
+  </mat-card>
+</div>
+<button mat-raised-button color="primary" class="buttoncol" (click)="flipCard()">Test Me!</button>
