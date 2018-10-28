@@ -8,6 +8,8 @@ import { MainComponent } from './main/main.component';
 import { EndComponent } from './end/end.component';
 import { GameButtonsComponent } from './game-buttons/game-buttons.component';
 import { CategoryComponent } from './category/category.component';
+import { RoomCreatorComponent } from './room-creator/room-creator.component';
+import { RoomJoinerComponent } from './room-joiner/room-joiner.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full'},
@@ -19,6 +21,8 @@ const routes: Routes = [
     { path: 'end', component: EndComponent },
     { path: 'game-buttons', component: GameButtonsComponent},
     { path: 'category', component: CategoryComponent},
+    { path: 'create-room', component: RoomCreatorComponent},
+    { path: 'join-room', component: RoomJoinerComponent}
 
 
 ];

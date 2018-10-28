@@ -20,6 +20,9 @@ import { ControllerService } from './controller.service';
 import { GameButtonsComponent } from './game-buttons/game-buttons.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CategoryComponent } from './category/category.component';
+import { RoomCreatorComponent } from './room-creator/room-creator.component';
+import { RoomJoinerComponent } from './room-joiner/room-joiner.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { CategoryComponent } from './category/category.component';
     MainComponent,
     EndComponent,
     GameButtonsComponent,
-    CategoryComponent
+    CategoryComponent,
+    RoomCreatorComponent,
+    RoomJoinerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ import { CategoryComponent } from './category/category.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [ControllerService],
   bootstrap: [AppComponent]

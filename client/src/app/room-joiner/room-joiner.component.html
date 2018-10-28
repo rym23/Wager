@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="row-height" >
+    <mat-card fxFlex="60">
+      <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center" >
+        <h3 color="primary">
+          Enter the room code on the TV
+        </h3>
+        <form class="room-form">          
+            <mat-form-field>
+              <textarea [(ngModel)]="room" name="room" matInput placeholder="Room" required></textarea>
+            </mat-form-field>
+          </form>
+          <button mat-raised-button color="accent" class="buttoncol" type="submit" (click)="joinRoom()">Join</button>
+      </mat-card-content>
+    </mat-card>
+  </div>

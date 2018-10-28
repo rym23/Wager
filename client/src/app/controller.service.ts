@@ -8,9 +8,15 @@ import * as io from 'socket.io-client';
 export class ControllerService {
   private url = 'http://localhost:5000';  
   private socket = io(this.url);
+  private room: string;
 
-  sendNames(names: string[]){
-    this.socket.emit('send-names', names);    
+  setRoom(room: string){
+    this.room = room;
+    this.socket.emit('join', room);
+  }
+
+  sendNames( names: string[]){
+    this.socket.emit('send-names', this.room, names);    
   }
 
   getNames() {
@@ -26,7 +32,7 @@ export class ControllerService {
   }  
 
   sendCommand(command: string){
-    this.socket.emit('send-command', command);    
+    this.socket.emit('send-command', this.room, command);    
   }
   
   getCommand() {
