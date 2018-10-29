@@ -23,6 +23,10 @@ import { CategoryComponent } from './category/category.component';
 import { RoomCreatorComponent } from './room-creator/room-creator.component';
 import { RoomJoinerComponent } from './room-joiner/room-joiner.component';
 import { FormsModule } from '@angular/forms';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { QuestionBankService } from './question-bank.service';
 
 @NgModule({
   declarations: [
@@ -49,9 +53,11 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
-  providers: [ControllerService],
+  providers: [ControllerService, QuestionBankService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
