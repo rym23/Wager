@@ -23,6 +23,7 @@ import { CategoryComponent } from './category/category.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { QuestionBankService } from './question-bank.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [ControllerService],
+  providers: [ControllerService, QuestionBankService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

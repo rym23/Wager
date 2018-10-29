@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ControllerService } from '../controller.service';
 import { Router } from '@angular/router';
 import { transition, trigger, style, animate, state } from "@angular/animations";
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { forEach } from '@angular/router/src/utils/collection';
+import { QuestionBankService } from '../question-bank.service';
 
 @Component({
   selector: 'app-main',
@@ -12,11 +11,11 @@ import { forEach } from '@angular/router/src/utils/collection';
   animations: [
     trigger('slideInOut', [
       transition(':enter', [
-        style({transform: 'translateY(-100%)'}),
-        animate('200ms ease-in', style({transform: 'translateY(0%)'}))
+        style({ transform: 'translateY(-100%)' }),
+        animate('200ms ease-in', style({ transform: 'translateY(0%)' }))
       ]),
       transition(':leave', [
-        animate('200ms ease-in', style({transform: 'translateY(50%)'}))
+        animate('200ms ease-in', style({ transform: 'translateY(60%)' }))
       ])
     ])
   ]
@@ -25,27 +24,14 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class MainComponent implements OnInit {
   visible: boolean = false;
   private questionContent: string;
-  private questionsSet: Set<string>;
   private playerNames: any;
   private playerPointer: number;
-  private categories: any[];
 
-  constructor(private controller: ControllerService,
-    private router: Router, private afs: AngularFirestore) {
-    this.loadCategories();
+  constructor(
+    private controller: ControllerService,
+    private router: Router,
+    private questionBank: QuestionBankService) {
     this.playerPointer = 0;
-    this.questionsSet = new Set();
-    var result = null;
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "../../assets/questions.txt", false);
-    xmlhttp.send();
-    if (xmlhttp.status == 200)
-      result = xmlhttp.responseText;
-    var questionsArr = result.split("\n");
-
-    for (let question of questionsArr) {
-      this.questionsSet.add(question);
-    }
   }
 
   ngOnInit() {
@@ -73,29 +59,15 @@ export class MainComponent implements OnInit {
   }
 
   getQuestion() {
-    var category = this.getRandomCategory();
-    var size = this.categories[category];
-    this.afs.firestore.collection(category)
-        .where('rand', '>', size).limit(1)
-        .get()
-        .then(querySnapshot => {
-                querySnapshot.forEach(function (doc) {
-                      console.log(doc.id); // id of doc
-                      console.log(doc.data()); // data of doc
-                })
-        });
-    var randIndex = Math.floor(Math.random() * (this.questionsSet.size + 1));
-    var i = 0;
-    for (var item of Array.from(this.questionsSet.values())) {
-      if (i == randIndex) {
-        var playerOne = this.getPlayerOne();
-        var playerTwo = this.getPlayerTwo(playerOne);
-        this.questionContent = item.replace("${playerOne}", playerOne).replace("${playerTwo}", playerTwo);
-        this.questionsSet.delete(item);
-        return;
-      }
-      i++;
-    };
+    this.questionBank.getRandomQuestion().subscribe(question => {
+      this.questionContent = String(question);
+      console.log(this.questionContent);
+      console.log(question);
+      console.log(question['question']);
+      var playerOne = this.getPlayerOne();
+      var playerTwo = this.getPlayerTwo(playerOne);
+      this.questionContent = this.questionContent.replace("${playerOne}", playerOne).replace("${playerTwo}", playerTwo);
+    });
   }
 
   getPlayerOne() {
@@ -115,20 +87,5 @@ export class MainComponent implements OnInit {
 
   async delay(ms: number) {
     await new Promise(resolve => setTimeout(() => resolve(), ms)).then(() => console.log("fired"));
-  }
-
-  getRandomCategory() {
-    return this.categories.keys()[Math.floor(Math.random() * (this.categories.length))];
-  }
-
-  loadCategories() {
-    var collectionNames = ["Geography", "Impressions", "Movies", "Music", "Physical Challenges", "Singing", "Sports", "Unfair"];
-    collectionNames.forEach(function(collection){
-      this.afs.firestore.collection(collection)
-        .get()
-        .then(snap => {
-        this.categories['category'] = snap.size;
-      })
-    });
   }
 }
