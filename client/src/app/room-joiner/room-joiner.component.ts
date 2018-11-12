@@ -19,9 +19,8 @@ export class RoomJoinerComponent implements OnInit {
   }
 
   joinRoom(){
-    this.controller.setRoom(this.room);
-    this.controller.sendCommand("next");
-    this.router.navigate(['/names']);
+    this.controller.sendCommand(this.room,"goToWaitingRoom");
+    this.router.navigate(['/names', this.room]);
   }
 
 }

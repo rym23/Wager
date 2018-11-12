@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ControllerService } from '../controller.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { transition, trigger, style, animate, state } from "@angular/animations";
 import { QuestionBankService } from '../question-bank.service';
 
@@ -26,26 +26,29 @@ export class MainComponent implements OnInit {
   private questionContent: string;
   private playerNames: any;
   private playerPointer: number;
+  private room;
 
   constructor(
     private controller: ControllerService,
     private router: Router,
-    private questionBank: QuestionBankService) {
+    private questionBank: QuestionBankService,
+    private route: ActivatedRoute) {
     this.playerPointer = 0;
   }
 
   ngOnInit() {
-    this.controller.getNames().subscribe(players => {
+    this.room = this.route.snapshot.paramMap.get('room');
+    this.controller.getNames(this.room).subscribe(players => {
       this.playerNames = players;
       this.newQuestion();
     });
-    this.controller.getCommand().subscribe(command => {
+    this.controller.getCommand(this.room).subscribe((command:string) => {
       console.log(command);
-      if (command == 'next') {
+      if (command.startsWith('next')) {
         this.newQuestion();
       }
       if (command == 'quit') {
-        this.router.navigate(['/end']);
+        this.router.navigate(['/end', this.room]);
       }
     });
   }
@@ -61,9 +64,6 @@ export class MainComponent implements OnInit {
   getQuestion() {
     this.questionBank.getRandomQuestion().subscribe(question => {
       this.questionContent = String(question);
-      console.log(this.questionContent);
-      console.log(question);
-      console.log(question['question']);
       var playerOne = this.getPlayerOne();
       var playerTwo = this.getPlayerTwo(playerOne);
       this.questionContent = this.questionContent.replace("${playerOne}", playerOne).replace("${playerTwo}", playerTwo);

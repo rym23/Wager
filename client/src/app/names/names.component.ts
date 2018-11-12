@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms'
 import { PlayerDataService } from '../player-data.service';
 import { ControllerService } from '../controller.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-names',
@@ -16,8 +16,10 @@ export class NamesComponent implements OnInit {
   public playerNames: FormArray;
   public playerNamesString: string[];
   public enoughPlayers: boolean;
+  private room: string;
 
   ngOnInit() {
+    this.room = this.route.snapshot.paramMap.get('room');
     this.playerGroup = this._fb.group({ 
       players: this._fb.array([this.initPlayers()])
     });
@@ -26,7 +28,8 @@ export class NamesComponent implements OnInit {
   constructor (
     private _fb: FormBuilder,
     private controller: ControllerService,
-    private router: Router) { 
+    private router: Router,
+    private route: ActivatedRoute) { 
     this.playerNamesString = [];
   }
 
@@ -56,8 +59,8 @@ export class NamesComponent implements OnInit {
     for(var item of this.playerNames.getRawValue()) {
       this.playerNamesString.push(item['playername']);
     }
-    this.controller.sendCommand("next");
-    this.controller.sendNames(this.playerNamesString);
-    this.router.navigate(['/game-buttons']);
+    this.controller.sendCommand(this.room, "startGame");
+    this.controller.setNames(this.room, this.playerNamesString);
+    this.router.navigate(['/game-buttons', this.room]);
   }
 }

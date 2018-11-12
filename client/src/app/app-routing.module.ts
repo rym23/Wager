@@ -15,12 +15,12 @@ const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full'},
     { path: 'welcome', component: WelcomeComponent },
   { path: 'huborcont', component: HuborcontComponent},
-  { path: 'names', component: NamesComponent},
-    { path: 'waiting', component: WaitingComponent },
-    { path: 'main', component: MainComponent },
+  { path: 'names/:room', component: NamesComponent},
+    { path: 'waiting/:room', component: WaitingComponent },
+    { path: 'main/:room', component: MainComponent },
     { path: 'end', component: EndComponent },
-    { path: 'game-buttons', component: GameButtonsComponent},
-    { path: 'category', component: CategoryComponent},
+    { path: 'game-buttons/:room', component: GameButtonsComponent},
+    { path: 'category/:room', component: CategoryComponent},
     { path: 'create-room', component: RoomCreatorComponent},
     { path: 'join-room', component: RoomJoinerComponent}
 

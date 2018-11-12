@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ControllerService } from '../controller.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game-buttons',
@@ -9,20 +9,24 @@ import { Router } from '@angular/router';
 })
 export class GameButtonsComponent implements OnInit {
 
+  room: string;
+
   constructor(
     private controller: ControllerService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.room = this.route.snapshot.paramMap.get('room');
   }
 
   next(){
-    this.controller.sendCommand("next");
+    this.controller.sendCommand(this.room,"next");
   }
 
   quit(){
-    this.controller.sendCommand("quit");
-    this.router.navigate(['/end']);
+    this.controller.sendCommand(this.room,"quit");
+    this.router.navigate(['/end', this.room]);
   }
 
 }

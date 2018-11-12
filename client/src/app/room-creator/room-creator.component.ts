@@ -13,15 +13,14 @@ export class RoomCreatorComponent implements OnInit {
   constructor(
     private controller: ControllerService,
     private router: Router) {
-    this.room = this.randomCode();
-    this.controller.setRoom(this.room);
    }
 
   ngOnInit() {
-    this.controller.getCommand().subscribe(command => {
-      console.log(command);
-      if (command == 'next') {
-        this.router.navigate(['/waiting']);
+    this.room = this.randomCode();
+    this.controller.createRoom(this.room);
+    this.controller.getCommand(this.room).subscribe(command => {
+      if (command == 'goToWaitingRoom') {
+        this.router.navigate(['/waiting', this.room]);
       }
     });
   }
