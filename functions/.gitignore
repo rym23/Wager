@@ -4,4 +4,7 @@
 
 # Typescript v1 declaration files
 typings/
-functions/node_modules/***
+functions/node_modules/
+functions/node_modules/*
+functions/node_modules/**
+firebase-debug.log
