@@ -9,7 +9,7 @@ import { map, switchMap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ControllerService {
-  private nextCount: number = 0;
+  prevCommand: string = ''; 
 
   constructor(
     private afs: AngularFirestore,
@@ -41,6 +41,7 @@ export class ControllerService {
 	  return this.afs.collection('rooms').doc(partyId).valueChanges().pipe(
       map((data: any[]) => {
         if(data && data['command']){
+          console.log("serv " + data['command']);
           return data['command'];
         } else {
           return '';
@@ -49,10 +50,6 @@ export class ControllerService {
   }
 
   async sendCommand(partyId: string, command: string) {
-    if(command == 'next'){
-      command += this.nextCount;
-      this.nextCount += 1;
-    }
     const ref = this.afs.collection('rooms').doc(partyId);
     return ref.update({
       command: command

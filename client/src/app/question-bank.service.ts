@@ -9,7 +9,8 @@ import { ObserversModule } from '@angular/cdk/observers';
 export class QuestionBankService {
   private categories: { [index: string]: number } = {};
 
-  constructor(private afs: AngularFirestore) {
+  constructor(
+    private afs: AngularFirestore) {
     this.loadCategories();
   }
 
@@ -24,15 +25,8 @@ export class QuestionBankService {
     };
   }
 
-  getRandomCategory() {
-    let size: number = Object.keys(this.categories).length;
-    let keys: string[] = Object.keys(this.categories);
-    return keys[Math.floor(Math.random() * (size - 1))];
-  }
-
-  getRandomQuestion() {
+  getRandomQuestion(category: string) {
     let observable = new Observable(observer => {
-      let category = this.getRandomCategory();
       let size = this.categories[category];
       let randomNumber = Math.floor((Math.random() * size));
       this.afs.firestore.collection(category)

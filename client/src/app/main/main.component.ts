@@ -3,6 +3,8 @@ import { ControllerService } from '../controller.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { transition, trigger, style, animate, state } from "@angular/animations";
 import { QuestionBankService } from '../question-bank.service';
+import { TurnService } from '../turn.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -24,33 +26,31 @@ import { QuestionBankService } from '../question-bank.service';
 export class MainComponent implements OnInit {
   visible: boolean = false;
   private questionContent: string;
-  private playerNames: any;
-  private playerPointer: number;
   private room;
+  private commandSubscription: Subscription;
 
   constructor(
     private controller: ControllerService,
     private router: Router,
     private questionBank: QuestionBankService,
-    private route: ActivatedRoute) {
-    this.playerPointer = 0;
+    private route: ActivatedRoute,
+    private turn: TurnService) {
   }
 
   ngOnInit() {
     this.room = this.route.snapshot.paramMap.get('room');
-    this.controller.getNames(this.room).subscribe(players => {
-      this.playerNames = players;
-      this.newQuestion();
-    });
-    this.controller.getCommand(this.room).subscribe((command:string) => {
+    this.newQuestion();
+    this.commandSubscription = this.controller.getCommand(this.room).subscribe((command:String) => {
       console.log(command);
-      if (command.startsWith('next')) {
-        this.newQuestion();
-      }
       if (command == 'quit') {
         this.router.navigate(['/end', this.room]);
       }
+      if (command == 'nextTurn') {
+        console.log("WHHYYY");
+        this.router.navigate(['/category', this.room]);
+      }
     });
+    
   }
 
   newQuestion() {
@@ -62,30 +62,19 @@ export class MainComponent implements OnInit {
   }
 
   getQuestion() {
-    this.questionBank.getRandomQuestion().subscribe(question => {
+    this.questionBank.getRandomQuestion(this.turn.getCategory()).subscribe(question => {
       this.questionContent = String(question);
-      var playerOne = this.getPlayerOne();
-      var playerTwo = this.getPlayerTwo(playerOne);
+      var playerOne = this.turn.getPlayerOne();
+      var playerTwo = this.turn.getPlayerTwo();
       this.questionContent = this.questionContent.replace("${playerOne}", playerOne).replace("${playerTwo}", playerTwo);
     });
   }
 
-  getPlayerOne() {
-    var playerOne = this.playerNames[this.playerPointer];
-    this.playerPointer = (this.playerPointer + 1) % this.playerNames.length;
-
-    return playerOne;
-  }
-
-  getPlayerTwo(playerOne) {
-    var playerTwo = playerOne;
-    while (playerOne === playerTwo) {
-      playerTwo = this.playerNames[Math.floor(Math.random() * (this.playerNames.length))];
-    }
-    return playerTwo;
-  }
-
   async delay(ms: number) {
-    await new Promise(resolve => setTimeout(() => resolve(), ms)).then(() => console.log("fired"));
+    await new Promise(resolve => setTimeout(() => resolve(), ms)).then();
+  }
+
+  ngOnDestroy(): void {
+    this.commandSubscription.unsubscribe();
   }
 }

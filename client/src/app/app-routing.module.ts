@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'names/:room', component: NamesComponent},
     { path: 'waiting/:room', component: WaitingComponent },
     { path: 'main/:room', component: MainComponent },
-    { path: 'end', component: EndComponent },
+    { path: 'end/:room', component: EndComponent },
     { path: 'game-buttons/:room', component: GameButtonsComponent},
     { path: 'category/:room', component: CategoryComponent},
     { path: 'create-room', component: RoomCreatorComponent},

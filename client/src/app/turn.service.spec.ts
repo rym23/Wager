@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PlayerDataService } from './player-data.service';
+import { TurnService } from './turn.service';
 
-describe('PlayerDataService', () => {
+describe('TurnService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: PlayerDataService = TestBed.get(PlayerDataService);
+    const service: TurnService = TestBed.get(TurnService);
     expect(service).toBeTruthy();
   });
 });

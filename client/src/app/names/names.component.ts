@@ -2,7 +2,6 @@ import { Component, OnInit, createPlatformFactory } from '@angular/core';
 import { group } from '@angular/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms'
-import { PlayerDataService } from '../player-data.service';
 import { ControllerService } from '../controller.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -59,8 +58,8 @@ export class NamesComponent implements OnInit {
     for(var item of this.playerNames.getRawValue()) {
       this.playerNamesString.push(item['playername']);
     }
-    this.controller.sendCommand(this.room, "startGame");
     this.controller.setNames(this.room, this.playerNamesString);
+    this.controller.sendCommand(this.room, "category");
     this.router.navigate(['/game-buttons', this.room]);
   }
 }

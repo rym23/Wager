@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ControllerService } from '../controller.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-room-creator',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RoomCreatorComponent implements OnInit {
   private room: string;
+  private commandSubscription: Subscription;
 
   constructor(
     private controller: ControllerService,
@@ -18,7 +20,8 @@ export class RoomCreatorComponent implements OnInit {
   ngOnInit() {
     this.room = this.randomCode();
     this.controller.createRoom(this.room);
-    this.controller.getCommand(this.room).subscribe(command => {
+    this.commandSubscription = this.controller.getCommand(this.room).subscribe(command => {
+      console.log(command);
       if (command == 'goToWaitingRoom') {
         this.router.navigate(['/waiting', this.room]);
       }
@@ -33,5 +36,9 @@ export class RoomCreatorComponent implements OnInit {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
   
     return text;
+  }
+
+  ngOnDestroy(): void {
+    this.commandSubscription.unsubscribe();
   }
 }

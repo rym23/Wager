@@ -8,7 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./game-buttons.component.scss']
 })
 export class GameButtonsComponent implements OnInit {
-
   room: string;
 
   constructor(
@@ -21,11 +20,11 @@ export class GameButtonsComponent implements OnInit {
   }
 
   next(){
-    this.controller.sendCommand(this.room,"next");
+    this.controller.sendCommand(this.room, 'nextTurn');
   }
 
   quit(){
-    this.controller.sendCommand(this.room,"quit");
+    this.controller.sendCommand(this.room, 'quit');
     this.router.navigate(['/end', this.room]);
   }
 

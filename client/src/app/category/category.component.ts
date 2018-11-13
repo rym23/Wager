@@ -11,6 +11,9 @@ import {
   animation,
   keyframes
 } from '@angular/animations';
+import { TurnService } from '../turn.service';
+import { ControllerService } from '../controller.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export const tada = animation(
   animate(
@@ -69,15 +72,31 @@ export const tada = animation(
   ],
 })
 export class CategoryComponent implements OnInit {
-  categories: string[] = ['Geography', 'Dancing', 'Singing', 'Music', 'Movies', 'Miscellaneous', 'Tim\'s Choice'];
+  categories: string[];
   currentCategory: string = 'Trivia';
   selected: boolean = false;
   showOpponent: boolean = false;
   showOpponentLine: boolean = false;
+  room: string;
+  playerOne: string;
+  playerTwo: string;
 
-  constructor() { }
+  constructor(
+    private controller: ControllerService,
+    private turnService: TurnService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
+    this.room = this.route.snapshot.paramMap.get('room');
+    this.controller.sendCommand(this.room, 'wait');
+    this.categories = this.turnService.getCategories();
+    this.currentCategory = this.turnService.getCategory();
+    this.turnService.nextCategory();
+    this.turnService.nextPlayers();
+    this.playerOne = this.turnService.getPlayerOne();
+    this.playerTwo = this.turnService.getPlayerTwo();
+    this.flipCard();
   }
 
   flipCard() {
@@ -91,21 +110,27 @@ export class CategoryComponent implements OnInit {
 
   flipRecurser(count: number, limit: number, delay: number) {
     if (count > limit) {
-      this.selected = true;
-      this.delay(2000).then(any=>{
-        this.showOpponentLine = true
-        this.delay(3000).then(any=>{
-          this.showOpponent = true;
+      this.delay(delay).then(any => {
+        this.currentCategory = this.turnService.getCategory();
+        this.selected = true;
+        this.delay(2000).then(any => {
+          this.showOpponentLine = true
+          this.delay(3000).then(any => {
+            this.showOpponent = true;
+            this.delay(3000).then(any => {
+              this.router.navigate(['/main', this.room]);
+            });
+          })
         });
       });
       return;
     }
-    
-    if(limit - count < 15){
+
+    if (limit - count < 15) {
       delay += 10;
-      if(limit - count < 3){
-        delay+=10;
-        if(limit - count == 1){
+      if (limit - count < 3) {
+        delay += 10;
+        if (limit - count == 1) {
           delay += 500;
         }
       }
@@ -119,6 +144,6 @@ export class CategoryComponent implements OnInit {
   }
 
   async delay(ms: number) {
-    await new Promise(resolve => setTimeout(() => resolve(), ms)).then(() => console.log("fired"));
+    await new Promise(resolve => setTimeout(() => resolve(), ms)).then();
   }
 }
