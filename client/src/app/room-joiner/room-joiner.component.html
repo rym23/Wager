@@ -6,7 +6,7 @@
         </h3>
         <form class="room-form">          
             <mat-form-field>
-              <textarea [(ngModel)]="room" name="room" matInput placeholder="Room" required></textarea>
+              <textarea [(ngModel)]="room" name="room" matInput placeholder="Room" required style="text-transform: uppercase"></textarea>
             </mat-form-field>
           </form>
           <button mat-raised-button color="accent" class="buttoncol" type="submit" (click)="joinRoom()">Join</button>

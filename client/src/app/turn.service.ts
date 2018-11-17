@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ControllerService } from './controller.service';
+import { CategoriesService } from './categories.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,16 @@ export class TurnService {
   private categories: string[];
   private currentCategory: string;
 
-  constructor() {
+  constructor(private categoriesService: CategoriesService) {
     this.playerPointer = 0;
-    this.categories = ["Geography", "Impressions", "Movies", "Music", "Physical Challenges", "Singing", "Sports", "Unfair", "Miscellaneous"];
+    this.categories = [];
+    this.categoriesService.getCategories().subscribe(categories => {
+      var categoryDictionary = categories as {};
+      for (const [key, value] of Object.entries(categoryDictionary)) {
+        this.categories.push(key);
+      }
+      console.log(this.categories);
+    });
   }
 
   setPlayerNames(playerNames: string[]){
@@ -39,7 +47,7 @@ export class TurnService {
   }
 
   nextCategory() {
-    this.currentCategory = this.categories[Math.floor(Math.random() * (this.categories.length - 1))]
+    this.currentCategory = this.categories[Math.floor(Math.random() * (this.categories.length))]
   }
 
   getCategory(){

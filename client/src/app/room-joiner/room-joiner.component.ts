@@ -19,6 +19,7 @@ export class RoomJoinerComponent implements OnInit {
   }
 
   joinRoom(){
+    this.room = this.room.toUpperCase();
     this.controller.sendCommand(this.room,"goToWaitingRoom");
     this.router.navigate(['/names', this.room]);
   }
