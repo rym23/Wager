@@ -14,7 +14,7 @@ export class TurnService {
 
   constructor() {
     this.playerPointer = 0;
-    this.categories = ["Geography", "Impressions", "Movies", "Music", "Physical Challenges", "Singing", "Sports", "Unfair"];
+    this.categories = ["Geography", "Impressions", "Movies", "Music", "Physical Challenges", "Singing", "Sports", "Unfair", "Miscellaneous"];
   }
 
   setPlayerNames(playerNames: string[]){

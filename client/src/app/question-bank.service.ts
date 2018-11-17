@@ -15,7 +15,7 @@ export class QuestionBankService {
   }
 
   loadCategories() {
-    var collectionNames = ["Geography", "Impressions", "Movies", "Music", "Physical Challenges", "Singing", "Sports", "Unfair"];
+    var collectionNames = ["Geography", "Impressions", "Movies", "Music", "Physical Challenges", "Singing", "Sports", "Unfair", "Miscellaneous"];
     for (let collection of collectionNames) {
       this.afs.firestore.collection(collection)
         .get()
